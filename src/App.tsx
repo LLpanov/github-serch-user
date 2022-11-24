@@ -1,13 +1,22 @@
 import React from 'react';
-import './index.css'
+import {Route, Routes} from "react-router-dom";
+
+import {FavoritesPage, Home} from "./pages";
+import Navigation from "./components/navigation";
+
+
+
 
 const App = () => {
     return (
         <>
-            <h1 className="font-bold text-3xl">hello</h1>
-            <li >ads</li>
+            <Navigation/>
+        <Routes>
+            <Route path={"/"} element={<Home/>}/>
+            <Route path={"/favorites"} element={<FavoritesPage/>}/>
+        </Routes>
         </>
     );
 };
 
-export default App;
+export default App
