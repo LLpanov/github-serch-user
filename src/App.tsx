@@ -2,7 +2,8 @@ import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
 import {FavoritesPage, Home} from "./pages";
-import Navigation from "./components/navigation";
+import {Navigation} from "./components";
+
 
 
 
