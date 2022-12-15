@@ -1,8 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
-import {githubApi} from "./github/github.api";
-import {githubReducer} from "./github/github.slice";
+import {githubApi} from "./github";
+import {githubReducer} from "./github";
 
 export const store = configureStore({
     reducer:{

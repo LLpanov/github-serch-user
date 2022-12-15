@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
-import {useLazyGetUserReposQuery, useSearchUsersQuery} from "../store/github/github.api";
-import {useDebounce} from "../hooks/debounce";
+import {useLazyGetUserReposQuery, useSearchUsersQuery} from "../store/github";
+import {useDebounce} from "../hooks";
 import {RepoCard} from "../components";
 
 

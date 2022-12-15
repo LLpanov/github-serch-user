@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "@reduxjs/toolkit";
 
-import {githubActions} from "../store/github/github.slice";
+import {githubActions} from "../store/github";
 
 const actions = {
     ...githubActions

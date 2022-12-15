@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {IRepo} from "../interfaces";
-import {useActions} from "../hooks/actions";
+import {useActions} from "../hooks";
+import {useAppSelector} from "../hooks";
 
 
 const RepoCard = ({repo}: { repo: IRepo }) => {
-    const {addFavourite} = useActions()
+    const {addFavourite, removeFavourite} = useActions();
+    const {favourites} = useAppSelector(state => state.github);
+
+    const [isFav , setIsFav ] = useState(favourites.includes(repo.html_url));
 
     const addToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         addFavourite(repo.html_url)
+        setIsFav(true)
+    }
+    const removeToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+
+        removeFavourite(repo.html_url)
+        setIsFav(false)
     }
 
     return (
@@ -20,12 +31,17 @@ const RepoCard = ({repo}: { repo: IRepo }) => {
                     Forks:<span className={"font-bold mr-2"}>{repo.forks}</span>
                     Watchers:<span className={"font-bold"}>{repo.watchers}</span>
                 </p>
-                <p className={"text-sm font-thin "}>{repo?.description}
+                <p className={"text-sm font-thin  justify-between"}>{repo?.description}
                 </p>
-                <button className={"py-2 px-4 bg-sky-500 rounded hover:shadow-md transition-all"}
+                { !isFav && <button className={"py-2 px-4 w-1/4 bg-sky-500 rounded mr-2 hover:shadow-md transition-all"}
                         onClick={addToFavorite}
                 >Add
-                </button>
+                </button>}
+
+                {isFav && <button className={"py-2 px-4 w-1/4 bg-red-600 rounded hover:shadow-md transition-all"}
+                        onClick={removeToFavorite}
+                > Delete
+                </button>}
             </a>
         </div>
     );
